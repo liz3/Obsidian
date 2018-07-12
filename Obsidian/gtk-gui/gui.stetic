@@ -1,0 +1,279 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<stetic-interface>
+  <configuration>
+    <images-root-path>..</images-root-path>
+  </configuration>
+  <import>
+    <widget-library name="glade-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
+    <widget-library name="../bin/Debug/Obsidian.exe" internal="true" />
+  </import>
+  <widget class="Gtk.Window" id="MainWindow" design-size="771 486">
+    <action-group name="Default">
+      <action id="FileAction">
+        <property name="Type">Action</property>
+        <property name="Label" translatable="yes">File</property>
+        <property name="ShortLabel" translatable="yes">File</property>
+      </action>
+      <action id="EditAction">
+        <property name="Type">Action</property>
+        <property name="Label" translatable="yes">Edit</property>
+        <property name="ShortLabel" translatable="yes">Edit</property>
+      </action>
+      <action id="OpenAction">
+        <property name="Type">Action</property>
+        <property name="Label" translatable="yes">Open</property>
+        <property name="ShortLabel" translatable="yes">Open</property>
+        <signal name="Activated" handler="openFileClicked" />
+      </action>
+      <action id="SaveAction">
+        <property name="Type">Action</property>
+        <property name="Label" translatable="yes">Save</property>
+        <property name="ShortLabel" translatable="yes">Save</property>
+        <signal name="Activated" handler="saveClicked" />
+      </action>
+      <action id="ImportHashtableAction">
+        <property name="Type">Action</property>
+        <property name="Label" translatable="yes">Import Hashtable</property>
+        <property name="ShortLabel" translatable="yes">Import Hashtable</property>
+        <signal name="Activated" handler="importHashtable" />
+      </action>
+      <action id="ExportHashtableAction">
+        <property name="Type">Action</property>
+        <property name="Label" translatable="yes">Export Hashtable</property>
+        <property name="ShortLabel" translatable="yes">Export Hashtable</property>
+        <signal name="Activated" handler="exportHashtable" />
+      </action>
+      <action id="ExportAllAction">
+        <property name="Type">Action</property>
+        <property name="Label" translatable="yes">Export All</property>
+        <property name="ShortLabel" translatable="yes">Export All</property>
+        <signal name="Activated" handler="exportAllClicked" />
+      </action>
+      <action id="ExportSelectedAction">
+        <property name="Type">Action</property>
+        <property name="Label" translatable="yes">Export Selected</property>
+        <property name="ShortLabel" translatable="yes">Export Selected</property>
+        <signal name="Activated" handler="exportSelected" />
+      </action>
+      <action id="CreateEmptyAction">
+        <property name="Type">Action</property>
+        <property name="Label" translatable="yes">Create Empty</property>
+        <property name="ShortLabel" translatable="yes">Create Empty</property>
+        <signal name="Activated" handler="clearUp" />
+      </action>
+      <action id="CreateFromDirectoryAction">
+        <property name="Type">Action</property>
+        <property name="Label" translatable="yes">Create from Directory</property>
+        <property name="ShortLabel" translatable="yes">Create from Directory</property>
+      </action>
+      <action id="RemoveAction">
+        <property name="Type">Action</property>
+        <property name="Label" translatable="yes">Remove</property>
+        <property name="ShortLabel" translatable="yes">Remove</property>
+        <signal name="Activated" handler="removeEntryClicked" />
+      </action>
+      <action id="AddFileAction">
+        <property name="Type">Action</property>
+        <property name="Label" translatable="yes">Add File</property>
+        <property name="ShortLabel" translatable="yes">Add File</property>
+        <signal name="Activated" handler="addFileClicked" />
+      </action>
+      <action id="AddFileDirectionAction">
+        <property name="Type">Action</property>
+        <property name="Label" translatable="yes">Add File Direction</property>
+        <property name="ShortLabel" translatable="yes">Add File Direction</property>
+        <property name="Visible">False</property>
+      </action>
+      <action id="AddFolderAction">
+        <property name="Type">Action</property>
+        <property name="Label" translatable="yes">Add Folder</property>
+        <property name="ShortLabel" translatable="yes">Add Folder</property>
+        <signal name="Activated" handler="importFolder" />
+      </action>
+      <action id="ModifyDataAction">
+        <property name="Type">Action</property>
+        <property name="Label" translatable="yes">Modify Data</property>
+        <property name="ShortLabel" translatable="yes">Modify Data</property>
+        <signal name="Activated" handler="modifyDataClicked" />
+      </action>
+    </action-group>
+    <property name="MemberName" />
+    <property name="Title" translatable="yes">Obsidian</property>
+    <property name="Icon">resource:Obsidian.obsidian.png</property>
+    <property name="WindowPosition">Center</property>
+    <property name="BorderWidth">6</property>
+    <signal name="DeleteEvent" handler="OnDeleteEvent" />
+    <child>
+      <widget class="Gtk.VBox" id="vbox2">
+        <property name="MemberName" />
+        <child>
+          <widget class="Gtk.MenuBar" id="menubar">
+            <property name="MemberName" />
+            <node name="menubar" type="Menubar">
+              <node type="Menu" action="FileAction">
+                <node type="Menuitem" action="OpenAction" />
+                <node type="Menuitem" action="SaveAction" />
+                <node type="Menuitem" action="ImportHashtableAction" />
+                <node type="Menuitem" action="ExportHashtableAction" />
+                <node type="Menuitem" action="ExportAllAction" />
+                <node type="Menuitem" action="ExportSelectedAction" />
+                <node type="Menuitem" action="CreateEmptyAction" />
+              </node>
+              <node type="Menu" action="EditAction">
+                <node type="Menuitem" action="RemoveAction" />
+                <node type="Menuitem" action="AddFileAction" />
+                <node type="Menuitem" action="AddFileDirectionAction" />
+                <node type="Menuitem" action="AddFolderAction" />
+                <node type="Menuitem" action="ModifyDataAction" />
+              </node>
+            </node>
+          </widget>
+          <packing>
+            <property name="Position">0</property>
+            <property name="AutoSize">True</property>
+            <property name="Expand">False</property>
+            <property name="Fill">False</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.Entry" id="searchBox">
+            <property name="MemberName" />
+            <property name="Tooltip" translatable="yes">Filter</property>
+            <property name="CanFocus">True</property>
+            <property name="IsEditable">True</property>
+            <property name="InvisibleChar">●</property>
+            <signal name="Changed" handler="filterChangedEvent" />
+          </widget>
+          <packing>
+            <property name="Position">1</property>
+            <property name="AutoSize">True</property>
+            <property name="Expand">False</property>
+            <property name="Fill">False</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.ScrolledWindow" id="GtkScrolledWindow">
+            <property name="MemberName" />
+            <property name="ShadowType">In</property>
+            <child>
+              <widget class="Gtk.NodeView" id="nodeview">
+                <property name="MemberName" />
+                <property name="CanFocus">True</property>
+                <property name="ShowScrollbars">True</property>
+              </widget>
+            </child>
+          </widget>
+          <packing>
+            <property name="Position">2</property>
+            <property name="AutoSize">True</property>
+          </packing>
+        </child>
+      </widget>
+    </child>
+  </widget>
+  <widget class="Gtk.Dialog" id="Obsidian.AddFileDialog" design-size="400 142">
+    <property name="MemberName" />
+    <property name="WindowPosition">Center</property>
+    <property name="Resizable">False</property>
+    <property name="Buttons">2</property>
+    <property name="HelpButton">False</property>
+    <child internal-child="VBox">
+      <widget class="Gtk.VBox" id="dialog1_VBox">
+        <property name="MemberName" />
+        <property name="BorderWidth">2</property>
+        <child>
+          <widget class="Gtk.Entry" id="entry1">
+            <property name="MemberName" />
+            <property name="Tooltip" translatable="yes">The actual File path</property>
+            <property name="CanFocus">True</property>
+            <property name="Text" translatable="yes">File Path</property>
+            <property name="IsEditable">False</property>
+            <property name="InvisibleChar">●</property>
+          </widget>
+          <packing>
+            <property name="Position">0</property>
+            <property name="AutoSize">True</property>
+            <property name="Expand">False</property>
+            <property name="Fill">False</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.Button" id="button9">
+            <property name="MemberName" />
+            <property name="CanFocus">True</property>
+            <property name="Type">TextOnly</property>
+            <property name="Label" translatable="yes">Choose</property>
+            <property name="UseUnderline">True</property>
+            <signal name="Clicked" handler="choosePathPressed" />
+          </widget>
+          <packing>
+            <property name="Position">1</property>
+            <property name="AutoSize">True</property>
+            <property name="Expand">False</property>
+            <property name="Fill">False</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.Entry" id="entry3">
+            <property name="MemberName" />
+            <property name="Tooltip" translatable="yes">The Virtual path in the Wad File</property>
+            <property name="CanFocus">True</property>
+            <property name="Text" translatable="yes">Path</property>
+            <property name="IsEditable">True</property>
+            <property name="InvisibleChar">●</property>
+          </widget>
+          <packing>
+            <property name="Position">2</property>
+            <property name="AutoSize">True</property>
+            <property name="Expand">False</property>
+            <property name="Fill">False</property>
+          </packing>
+        </child>
+      </widget>
+    </child>
+    <child internal-child="ActionArea">
+      <widget class="Gtk.HButtonBox" id="dialog1_ActionArea">
+        <property name="MemberName" />
+        <property name="Spacing">10</property>
+        <property name="BorderWidth">5</property>
+        <property name="Size">2</property>
+        <property name="LayoutStyle">End</property>
+        <child>
+          <widget class="Gtk.Button" id="buttonCancel">
+            <property name="MemberName" />
+            <property name="CanDefault">True</property>
+            <property name="CanFocus">True</property>
+            <property name="UseStock">True</property>
+            <property name="Type">StockItem</property>
+            <property name="StockId">gtk-cancel</property>
+            <property name="ResponseId">-6</property>
+            <signal name="Clicked" handler="cancelPressed" />
+            <property name="label">gtk-cancel</property>
+          </widget>
+          <packing>
+            <property name="Expand">False</property>
+            <property name="Fill">False</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.Button" id="buttonOk">
+            <property name="MemberName" />
+            <property name="CanDefault">True</property>
+            <property name="CanFocus">True</property>
+            <property name="UseStock">True</property>
+            <property name="Type">StockItem</property>
+            <property name="StockId">gtk-ok</property>
+            <property name="ResponseId">-5</property>
+            <signal name="Pressed" handler="btnPressed" />
+            <property name="label">gtk-ok</property>
+          </widget>
+          <packing>
+            <property name="Position">1</property>
+            <property name="Expand">False</property>
+            <property name="Fill">False</property>
+          </packing>
+        </child>
+      </widget>
+    </child>
+  </widget>
+</stetic-interface>

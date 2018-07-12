@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProjectGuid>{511EA138-4B6C-4ECC-9A78-CD6FE3FB6E6F}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Obsidian</RootNamespace>
+    <AssemblyName>Obsidian</AssemblyName>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="gtk-sharp, Version=2.4.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="gdk-sharp, Version=2.4.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="glib-sharp, Version=2.4.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="glade-sharp, Version=2.4.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="pango-sharp, Version=2.4.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="atk-sharp, Version=2.4.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="Mono.Posix" />
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="ZstdNet">
+      <HintPath>..\packages\ZstdNet.1.3.3\lib\net45\ZstdNet.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="gtk-gui\gui.stetic">
+      <LogicalName>gui.stetic</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\..\Desktop\obsidian.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="gtk-gui\generated.cs" />
+    <Compile Include="MainWindow.cs" />
+    <Compile Include="gtk-gui\MainWindow.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utils\ConfigUtils.cs" />
+    <Compile Include="Utils\Logging.cs" />
+    <Compile Include="Utils\WADHashGenerator.cs" />
+    <Compile Include="Api\IO\WAD\WADFile.cs" />
+    <Compile Include="Api\IO\WAD\WADEntry.cs" />
+    <Compile Include="Api\Helpers\Compression.cs" />
+    <Compile Include="Api\Helpers\Cryptography.cs" />
+    <Compile Include="Api\IO\BIN\BINFile.cs" />
+    <Compile Include="Api\IO\BIN\BINFileAdditionalData.cs" />
+    <Compile Include="Api\IO\BIN\BINFileContainer.cs" />
+    <Compile Include="Api\IO\BIN\BINFileEntry.cs" />
+    <Compile Include="Api\IO\BIN\BINFileMap.cs" />
+    <Compile Include="Api\IO\BIN\BINFileStructure.cs" />
+    <Compile Include="Api\IO\BIN\BINFileValue.cs" />
+    <Compile Include="Api\IO\BIN\BINFileValuePair.cs" />
+    <Compile Include="Api\IO\BIN\IBINFileValue.cs" />
+    <Compile Include="Api\Helpers\Structures\ColorBGRAVector4Byte.cs" />
+    <Compile Include="Api\Helpers\Structures\ColorRGBAVector4.cs" />
+    <Compile Include="Api\Helpers\Structures\ColorRGBAVector4Byte.cs" />
+    <Compile Include="Api\Helpers\Structures\ColorRGBVector3Byte.cs" />
+    <Compile Include="Api\Helpers\Structures\Quaternion.cs" />
+    <Compile Include="Api\Helpers\Structures\R3DBoundingBox.cs" />
+    <Compile Include="Api\Helpers\Structures\R3DBox.cs" />
+    <Compile Include="Api\Helpers\Structures\R3DMatrix44.cs" />
+    <Compile Include="Api\Helpers\Structures\R3DSphere.cs" />
+    <Compile Include="Api\Helpers\Structures\TimeGradient.cs" />
+    <Compile Include="Api\Helpers\Structures\Vector2.cs" />
+    <Compile Include="Api\Helpers\Structures\Vector2Byte.cs" />
+    <Compile Include="Api\Helpers\Structures\Vector3.cs" />
+    <Compile Include="Api\Helpers\Structures\Vector3Byte.cs" />
+    <Compile Include="Api\Helpers\Structures\Vector4.cs" />
+    <Compile Include="Api\Helpers\Structures\Vector4Byte.cs" />
+    <Compile Include="ValueConverters\SizeValueConverter.cs" />
+    <Compile Include="ValueConverters\WadNameConverter.cs" />
+    <Compile Include="Core\Manager.cs" />
+    <Compile Include="Api\Helpers\Utilities.cs" />
+    <Compile Include="AddFileDialog.cs" />
+    <Compile Include="gtk-gui\Obsidian.AddFileDialog.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Api\" />
+    <Folder Include="Utils\" />
+    <Folder Include="Api\IO\" />
+    <Folder Include="Api\IO\WAD\" />
+    <Folder Include="Api\IO\BIN\" />
+    <Folder Include="Api\Helpers\" />
+    <Folder Include="Api\Helpers\Structures\" />
+    <Folder Include="ValueConverters\" />
+    <Folder Include="Core\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\ZstdNet.1.3.3\build\ZstdNet.targets" Condition="Exists('..\packages\ZstdNet.1.3.3\build\ZstdNet.targets')" />
+</Project>
